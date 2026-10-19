@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>鏡島 謎解きさんぽ 解答用紙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --paper: #F3EEE3;
+    --ink: #26221C;
+    --sub: #6E655A;
+    --gold: #A8884E;
+    --gold-soft: #E7D9BC;
+    --green: #1E3A2A;
+    --line: #CFC3AD;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #888; font-family: "Zen Kaku Gothic New", "IPAGothic", sans-serif; color: var(--ink); }
+  .page {
+    width: 210mm; height: 297mm; background: var(--paper);
+    margin: 0 auto 10mm; padding: 13mm 14mm 11mm; position: relative; overflow: hidden;
+    page-break-after: always;
+  }
+  @media print { body { background: none; } .page { margin: 0; } }
+  .serif { font-family: "Noto Serif JP", serif; }
+
+  /* 背景の虫めがね */
+  .bgmark { position: absolute; right: -28mm; top: -20mm; width: 120mm; height: 120mm; opacity: .07; }
+
+  /* ヘッダー */
+  .head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: .6mm solid var(--gold); padding-bottom: 3.5mm; }
+  .kicker { font-size: 3.1mm; letter-spacing: .6em; color: var(--sub); }
+  .title { font-family: "Noto Serif JP", serif; font-weight: 800; font-size: 11mm; line-height: 1.15; margin-top: 1.5mm; }
+  .title em { font-style: normal; color: var(--gold); }
+  .brand { text-align: right; }
+  .brand .logo { font-family: "Noto Serif JP", serif; font-weight: 800; font-size: 6.4mm; }
+  .brand .meta { font-size: 2.8mm; color: var(--sub); margin-top: .8mm; line-height: 1.5; }
+
+  .rules { display: flex; gap: 4mm; margin: 3.5mm 0 4mm; font-size: 3mm; color: var(--sub); align-items: center; }
+  .rules .key { display: inline-flex; align-items: center; gap: 1.5mm; }
+  .mini { width: 4.6mm; height: 4.6mm; border: .3mm solid var(--ink); background: #fff; display: inline-block; }
+  .mini.hot { border: .9mm solid var(--ink); background: var(--gold-soft); }
+
+  /* 小問グリッド */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 4mm; }
+  .q { background: #FBF8F2; border: .3mm solid var(--line); border-radius: 2mm; padding: 3.2mm 3.6mm 3.4mm; display: flex; flex-direction: column; min-height: 50mm; }
+  .qhead { display: flex; align-items: center; gap: 2.2mm; }
+  .num { font-family: "Noto Serif JP", serif; font-weight: 800; font-size: 7mm; color: var(--gold); line-height: 1; width: 8mm; }
+  .place { font-weight: 700; font-size: 3.5mm; line-height: 1.3; }
+  .tag { margin-left: auto; font-size: 2.5mm; color: var(--green); border: .25mm solid var(--green); border-radius: 5mm; padding: .4mm 2mm; white-space: nowrap; }
+  .text { font-size: 3.15mm; line-height: 1.65; margin: 2.2mm 0 2.6mm; flex: 1; }
+  .text b { font-weight: 700; }
+  .code { font-family: "Noto Serif JP", serif; font-weight: 600; letter-spacing: .25em; background: var(--gold-soft); padding: 0 1.2mm; }
+  .opts { display: flex; flex-wrap: wrap; gap: 1mm 2mm; margin-top: 1.2mm; }
+  .opts span { font-size: 2.8mm; border: .25mm dashed var(--sub); border-radius: 1mm; padding: .2mm 1.5mm; }
+  .boxes { display: flex; gap: 1.2mm; }
+  .box { width: 8.4mm; height: 8.4mm; border: .3mm solid var(--ink); background: #fff; }
+  .box.hot { border: 1mm solid var(--ink); background: var(--gold-soft); position: relative; }
+  .box.hot::after { content: attr(data-n); position: absolute; top: -3.4mm; left: 50%; transform: translateX(-50%); font-size: 2.6mm; font-weight: 700; color: var(--gold); }
+  .boxes.small .box { width: 7.2mm; height: 7.2mm; }
+
+  .foot { position: absolute; left: 14mm; right: 14mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 2.7mm; color: var(--sub); border-top: .3mm dashed var(--line); padding-top: 2.2mm; }
+
+  /* 裏面 */
+  .back { background: var(--green); color: #EFE8D8; }
+  .back .kicker { color: #BFB49C; }
+  .back .title { color: #F6F0E2; }
+  .back .head { border-color: var(--gold); }
+  .back .brand .meta { color: #BFB49C; }
+  .story { font-family: "Noto Serif JP", serif; font-size: 4mm; line-height: 2; margin-top: 9mm; }
+  .story .big { font-size: 9mm; font-weight: 800; color: #E2C98F; }
+  .panel { background: rgba(243,238,227,.06); border: .3mm solid rgba(168,136,78,.6); border-radius: 2.5mm; padding: 6mm; margin-top: 7mm; }
+  .panel h3 { font-size: 3.4mm; letter-spacing: .3em; color: #E2C98F; font-weight: 700; margin-bottom: 4mm; }
+  .collect { display: flex; flex-direction: row; justify-content: center; gap: 2.4mm; }
+  .slot { display: flex; flex-direction: column; align-items: center; gap: 1.6mm; }
+  .slot .n { font-family: "Noto Serif JP", serif; font-weight: 800; font-size: 5mm; color: #E2C98F; transform: scaleX(-1); }
+  .slot .b { width: 15mm; height: 15mm; border: .9mm solid #E2C98F; background: rgba(255,255,255,.08); border-radius: 1mm; }
+  .mirror-note { text-align: center; font-size: 2.9mm; color: #BFB49C; margin-top: 4mm; }
+  .answer { display: flex; justify-content: center; gap: 2.4mm; }
+  .answer .b { width: 15mm; height: 15mm; background: #F6F0E2; border-radius: 1mm; }
+  .answer-label { text-align: center; font-size: 3.2mm; margin-top: 4mm; color: #EFE8D8; }
+  .booth { display: flex; gap: 6mm; margin-top: 7mm; align-items: stretch; }
+  .booth .stamp { width: 38mm; height: 38mm; border: .5mm dashed #E2C98F; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 2.9mm; color: #BFB49C; flex: none; }
+  .booth .notes { font-size: 3mm; line-height: 1.85; color: #DCD3C0; }
+  .booth .notes b { color: #F6F0E2; }
+  .name { margin-top: 3mm; border-bottom: .3mm solid #BFB49C; width: 100%; padding-bottom: 1mm; font-size: 2.9mm; color: #BFB49C; }
+  .back .foot { color: #BFB49C; border-color: rgba(168,136,78,.5); }
+</style>
+</head>
+<body>
+
+<!-- ===== 表面 ===== -->
+<section class="page">
+  <svg class="bgmark" viewBox="0 0 100 100" fill="none" stroke="#A8884E" stroke-width="3">
+    <circle cx="45" cy="45" r="30"/><circle cx="45" cy="45" r="22"/><line x1="67" y1="67" x2="92" y2="92" stroke-width="7" stroke-linecap="round"/>
+  </svg>
+
+  <header class="head">
+    <div>
+      <div class="kicker">QU-WALK × COBOMARKET</div>
+      <h1 class="title"><em>鏡島</em>謎解きさんぽ</h1>
+    </div>
+    <div class="brand">
+      <div class="logo">Qu-walk</div>
+      <div class="meta">2026.11.8 SUN ／ 鏡島弘法（乙津寺）</div>
+    </div>
+  </header>
+
+  <div class="rules">
+    <span>境内と周辺の案内板を読んで、8つの問いに答えよう。答えはひらがなで1マスに1文字。小さい「ゃ・ゅ・ょ」も1マス。</span>
+    <span class="key"><i class="mini hot"></i>＝裏面で使う文字</span>
+  </div>
+
+  <div class="grid">
+    <article class="q">
+      <div class="qhead"><span class="num">1</span><span class="place">乙津寺の文化財</span><span class="tag">並べる</span></div>
+      <p class="text">案内板の3体の仏像を、<b>背の高い順</b>に並べよう。一番背の高い仏像は、四天王のうち「北」を守る仏の別の名前でもある。北を守る仏の名前は？</p>
+      <div class="boxes"><i class="box"></i><i class="box"></i><i class="box hot" data-n="①"></i><i class="box"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">2</span><span class="place">稲荷神社と鏡島城跡</span><span class="tag">暗号</span></div>
+      <p class="text">暗号で書かれた質問。「いなり」は暗号で「<span class="code">うにる</span>」になる。<br><span class="code">きむしみは にみおひ？</span><br>解読した質問に、案内板を見て答えよう。</p>
+      <div class="boxes small"><i class="box hot" data-n="②"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">3</span><span class="place">乙津寺の文化財</span><span class="tag">部首</span></div>
+      <p class="text">3体の仏像のうち、名前に<b>「うまへん」</b>の漢字が入っている仏像は？</p>
+      <div class="boxes"><i class="box hot" data-n="③"></i><i class="box"></i><i class="box"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">4</span><span class="place">一条兼良正室・東御方墓</span><span class="tag">抜き出し</span></div>
+      <p class="text">案内板で<b>「鮎」</b>という字を探そう。その前に「□□をみて」と書かれている。□□の読みは？</p>
+      <div class="boxes"><i class="box"></i><i class="box hot" data-n="④"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">5</span><span class="place">不動明王</span><span class="tag">見比べる</span></div>
+      <p class="text">次のうち、<b>不動明王</b>の案内板にはあって、<b>稲荷神社</b>の案内板にはないご利益は？
+        <span class="opts"><span>しょうばいはんじょう</span><span>えんむすび</span><span>さいなんよけ</span><span>ごうかくきがん</span></span></p>
+      <div class="boxes"><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box hot" data-n="⑤"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">6</span><span class="place">小紅の渡し</span><span class="tag">推理</span></div>
+      <p class="text">今日は11月8日（日）。明日もう一度ここへ来ても、渡し舟には乗れません。その理由になっている<b>曜日</b>は？</p>
+      <div class="boxes"><i class="box"></i><i class="box"></i><i class="box hot" data-n="⑥"></i><i class="box"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">7</span><span class="place">弘法大師像</span><span class="tag">読み替え</span></div>
+      <p class="text">金色の像の台座に彫られた名前は「<b>そら</b>」と「<b>うみ</b>」。でも、そうは読みません。何と読む？</p>
+      <div class="boxes"><i class="box hot" data-n="⑦"></i><i class="box"></i><i class="box"></i><i class="box"></i></div>
+    </article>
+
+    <article class="q">
+      <div class="qhead"><span class="num">8</span><span class="place">俳人塩谷鵜平の句碑</span><span class="tag">ひっかけ</span></div>
+      <p class="text">句を詠んだ俳人の名字は「塩谷」。「しおたに」……ではありません。案内板の<b>ふりがな</b>で答えよう。</p>
+      <div class="boxes"><i class="box"></i><i class="box"></i><i class="box hot" data-n="⑧"></i></div>
+    </article>
+  </div>
+
+  <footer class="foot">
+    <span>8問すべて解けたら、裏面へ。</span>
+    <span>境内では静かに。墓所や立入禁止の場所には入らないでください。</span>
+  </footer>
+</section>
+
+<!-- ===== 裏面 ===== -->
+<section class="page back">
+  <svg class="bgmark" viewBox="0 0 100 100" fill="none" stroke="#E2C98F" stroke-width="3" style="opacity:.09">
+    <circle cx="45" cy="45" r="30"/><circle cx="45" cy="45" r="22"/><line x1="67" y1="67" x2="92" y2="92" stroke-width="7" stroke-linecap="round"/>
+  </svg>
+
+  <header class="head">
+    <div>
+      <div class="kicker">FINAL</div>
+      <h1 class="title">最後の謎</h1>
+    </div>
+    <div class="brand">
+      <div class="logo">Qu-walk</div>
+      <div class="meta">鏡島謎解きさんぽ</div>
+    </div>
+  </header>
+
+  <p class="story">太枠に入った8つの文字を、①から順に並べてみよう。<br>
+  ……意味が通らない？<br>
+  ここは <span class="big">「鏡」島</span>。<br>
+  この島では、言葉も鏡に映して読むのです。</p>
+
+  <div class="panel">
+    <h3>集めた文字</h3>
+    <div class="collect">
+      <div class="slot"><span class="n">①</span><i class="b"></i></div>
+      <div class="slot"><span class="n">②</span><i class="b"></i></div>
+      <div class="slot"><span class="n">③</span><i class="b"></i></div>
+      <div class="slot"><span class="n">④</span><i class="b"></i></div>
+      <div class="slot"><span class="n">⑤</span><i class="b"></i></div>
+      <div class="slot"><span class="n">⑥</span><i class="b"></i></div>
+      <div class="slot"><span class="n">⑦</span><i class="b"></i></div>
+      <div class="slot"><span class="n">⑧</span><i class="b"></i></div>
+    </div>
+    <p class="mirror-note">表面の①〜⑧の文字を、同じ番号のマスへ</p>
+  </div>
+
+  <div class="panel">
+    <h3>浮かび上がった合言葉</h3>
+    <div class="answer"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i></div>
+    <p class="answer-label">合言葉を、Qu-walkのブースで伝えてください。</p>
+  </div>
+
+  <div class="booth">
+    <div class="stamp">クリア<br>スタンプ</div>
+    <div class="notes">
+      <b>解き終わったら</b><br>
+      COBOmarket会場のQu-walkブースへ。<br>
+      合言葉を言えたら、クリアスタンプを押します。<br>
+      わからないときは、ブースでヒントカードを配っています。
+      <div class="name">お名前（ニックネーム可）</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>Qu-walk ／ 街が、謎になる。</span>
+    <span>参加費 500円 ／ 岐阜市鏡島中2丁目8-1</span>
+  </footer>
+</section>
+
+</body>
+</html>
